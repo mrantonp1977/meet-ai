@@ -29,22 +29,22 @@ const DashboardNavbar = () => {
     <>
     <DashboardCommand open={commandOpen} setOpen={setCommandOpen}/>
       <nav className="flex px-4 gap-x-2 items-center py-3 border-b bg-sidebar">
-        <Button className="size-9" variant={'outline'} onClick={toggleSidebar}>
+        <Button className="size-7" variant={'outline'} onClick={toggleSidebar}>
           {state === 'collapsed' || isMobile ? (
             <PanelLeftIcon className="h-4 w-4" />
           ) : (
-            <PanelLeftCloseIcon className="h-4 w-4" />
+            <PanelLeftCloseIcon className="h-4 w-4 " />
           )}
         </Button>
         <Button
           variant={'outline'}
           size={'sm'}
           onClick={() => setCommandOpen((open) => !open)}
-          className="h-9 w-[240px] justify-start font-normal text-muted-foreground hover:text-muted-foreground"
+          className="h-9 w-[280px] justify-start font-normal text-white/70 hover:text-white/70 bg-sidebar hover:bg-sidebar/80 border border-border/30 hover:border-border/20 transition-colors disabled:opacity-50 disabled:pointer-events-none gap-x-2"
         >
           <SearchIcon className="h-4 w-4" />
-          Search
-          <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center rounded gap-1 border bg-muted px-2 font-mono text-[10px] font-medium text-muted-foreground">
+          Search...
+          <kbd className="ml-auto pointer-events-none inline-flex h-5 select-none items-center rounded gap-1 border px-2 font-mono text-[10px] font-medium text-white/70 bg-sidebar border-none">
             <span className="text-xs">Ctrl + k</span>
           </kbd>
         </Button>
