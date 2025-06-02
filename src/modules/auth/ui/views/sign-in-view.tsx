@@ -188,7 +188,7 @@ export const SignInView = () => {
               width={192}
               height={192}
             />
-            <p className="text-3xl font-semibold text-white">Meet AI</p>
+            <p className="text-3xl font-semibold text-white">Meet-AI</p>
           </div>
         </CardContent>
       </Card>
