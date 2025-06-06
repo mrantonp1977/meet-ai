@@ -37,7 +37,6 @@ const AgentIdView = ({ agentId }: AgentIdViewProps) => {
         await queryClient.invalidateQueries(
           trpc.agents.getMany.queryOptions({})
         );
-        toast.success('Agent removed successfully');
         router.push('/agents');
       },
       onError: (error) => {
