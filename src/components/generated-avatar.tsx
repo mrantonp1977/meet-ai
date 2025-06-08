@@ -20,7 +20,7 @@ const GeneratedAvatar = ({ seed, className, variant }: GeneratedAvatarProps) => 
     avatar = createAvatar(initials, {
       seed,
       fontWeight: 500,
-      fontSize: 42
+      fontSize: 42,
       
   })
 }
