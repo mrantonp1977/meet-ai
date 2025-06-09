@@ -5,28 +5,28 @@ import { ChevronRightIcon,  PencilIcon, TrashIcon } from 'lucide-react';
 import Link from 'next/link';
 import React from 'react'
 
-interface AgentIdViewHeaderProps {
-  agentId: string;
-  agentName: string;
+interface MeetingIdViewHeaderProps {
+  meetingId: string;
+  meetingName: string;
   onEdit: () => void;
   onRemove: () => void;
 }
 
-const AgentIdViewHeader = ({
-  agentId,
-  agentName,
+const MeetingIdViewHeader = ({
+  meetingId,
+  meetingName,
   onEdit = () => {},
   onRemove = () => {}
-}: AgentIdViewHeaderProps) => {
-
+}: MeetingIdViewHeaderProps) => {
+  
   return (
     <div className='flex items-center justify-between'>
       <Breadcrumb>
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink asChild className='font-medium text-xl'>
-              <Link href="/agents">
-                My Agents
+              <Link href="/meetings">
+                My Meetings
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -35,8 +35,8 @@ const AgentIdViewHeader = ({
           </BreadcrumbSeparator>
           <BreadcrumbItem >
             <BreadcrumbLink asChild className='font-medium text-xl text-foreground'>
-              <Link href={`/agents/${agentId}`}>
-                {agentName}
+              <Link href={`/meetings/${meetingId}`}>
+                {meetingName}
               </Link>
             </BreadcrumbLink>
           </BreadcrumbItem>
@@ -62,15 +62,15 @@ const AgentIdViewHeader = ({
       <div className='flex items-center gap-x-4'>
         <Button variant="default1" size="sm" onClick={onEdit}>
           <PencilIcon className="h-4 w-4" />
-          Edit Agent
+          Edit Meeting
         </Button>
         <Button variant="destructive" size="sm" onClick={onRemove}>
           <TrashIcon className="h-4 w-4" />
-          Delete Agent
+          Delete Meeting
         </Button>
       </div>
     </div>
   )
 }
 
-export default AgentIdViewHeader
+export default MeetingIdViewHeader
