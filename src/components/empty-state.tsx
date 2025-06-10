@@ -5,13 +5,14 @@ import React from 'react'
 interface ErrorStateProps {
   title: string;
   description?: string;
+  image?: string;
 };
 
-const EmptyState = ({ title, description }: ErrorStateProps) => {
+const EmptyState = ({ title, description, image = "/empty.svg" }: ErrorStateProps) => {
   return (
     <div className="flex flex-col items-center justify-center">
         <Image 
-          src="/empty.svg"
+          src={image}
           alt="Empty State"
           width={340}
           height={340}
