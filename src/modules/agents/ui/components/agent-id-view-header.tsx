@@ -60,11 +60,11 @@ const AgentIdViewHeader = ({
         </DropdownMenuContent>
       </DropdownMenu> */}
       <div className='flex items-center gap-x-4'>
-        <Button variant="default1" size="sm" onClick={onEdit}>
+        <Button className='bg-white text-black font-semibold border-2 border-black hover:bg-black hover:text-white' size="sm" onClick={onEdit}>
           <PencilIcon className="h-4 w-4" />
           Edit Agent
         </Button>
-        <Button variant="destructive" size="sm" onClick={onRemove}>
+        <Button className='bg-white text-red-500 font-semibold border-2 border-red-500 hover:bg-red-500 hover:text-white' size="sm" onClick={onRemove}>
           <TrashIcon className="h-4 w-4" />
           Delete Agent
         </Button>

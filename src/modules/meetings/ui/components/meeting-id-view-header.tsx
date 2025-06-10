@@ -60,11 +60,11 @@ const MeetingIdViewHeader = ({
         </DropdownMenuContent>
       </DropdownMenu> */}
       <div className='flex items-center gap-x-4'>
-        <Button variant="default1" size="sm" onClick={onEdit}>
+        <Button className='bg-white text-black border-2 font-semibold border-black hover:bg-black hover:text-white' size="sm" onClick={onEdit}>
           <PencilIcon className="h-4 w-4" />
           Edit Meeting
         </Button>
-        <Button variant="destructive" size="sm" onClick={onRemove}>
+        <Button className='bg-white text-red-500 border-2 font-semibold border-red-500 hover:bg-red-500 hover:text-white' size="sm" onClick={onRemove}>
           <TrashIcon className="h-4 w-4" />
           Delete Meeting
         </Button>
