@@ -25,13 +25,13 @@ export const meetingsRouter = createTRPCRouter({
       }
     ]);
 
-    const expirarionTime = Math.floor(Date.now() / 1000) + 3600;
-    const issuedAt = Math.floor(Date.now() / 1000) -60;
+    // const expirarionTime = Math.floor(Date.now() / 1000) + 3600;
+    // const issuedAt = Math.floor(Date.now() / 1000) -60;
 
     const token = streamVideo.generateUserToken({
       user_id: ctx.auth.user.id,
-      exp: expirarionTime,
-      valirity_in_seconds: issuedAt,
+      // exp: expirarionTime,
+      // valirity_in_seconds: issuedAt,
     });
 
     return token;
