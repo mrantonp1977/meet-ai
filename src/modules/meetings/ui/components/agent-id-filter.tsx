@@ -27,7 +27,7 @@ const AgentIdFilter = () => {
             <GeneratedAvatar 
               seed={agent.name}
               variant="botttsNeutral"
-              className=""
+              className="size-6"
             />
             {agent.name}
           </div>

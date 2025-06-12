@@ -92,7 +92,7 @@ const AgentForm = ({
   return (
     <Form {...form}>
       <form className="space-y-4" onSubmit={form.handleSubmit(onSubmit)}>
-        <GeneratedAvatar seed={form.watch("name")} variant="botttsNeutral" className=""/>
+        <GeneratedAvatar seed={form.watch("name")} variant="botttsNeutral" className="size-11"/>
         <FormField 
           name="name"
           control={form.control}

@@ -50,7 +50,7 @@ const DashboardUserButton = () => {
             <GeneratedAvatar
               seed={data.user.name}
               variant="initials"
-              className=""
+              className="size-6"
             />
           )}
           <div className="flex flex-col gap-0.5 text-left overflow-hidden ml-2 flex-1 min-w-0">
@@ -97,7 +97,7 @@ const DashboardUserButton = () => {
           <GeneratedAvatar
             seed={data.user.name}
             variant="initials"
-            className=""
+            className="size-6"
           />
         )}
         <div className="flex flex-col gap-0.5 text-left overflow-hidden ml-2 flex-1 min-w-0">

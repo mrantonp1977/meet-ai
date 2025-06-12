@@ -25,9 +25,8 @@ const GeneratedAvatar = ({ seed, className, variant }: GeneratedAvatarProps) => 
   })
 }
   return (
-    <Avatar>
-      <AvatarImage
-        className={cn(className)}
+    <Avatar className={cn(className)}>
+      <AvatarImage       
         src={avatar.toDataUri()}
         alt={"Avatar"}
       />
