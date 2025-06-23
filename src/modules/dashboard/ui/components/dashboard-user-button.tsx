@@ -1,7 +1,15 @@
 import GeneratedAvatar from '@/components/generated-avatar';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
-import { Drawer, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer';
+import {
+  Drawer,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger,
+} from '@/components/ui/drawer';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -61,15 +69,14 @@ const DashboardUserButton = () => {
         </DrawerTrigger>
         <DrawerContent>
           <DrawerHeader>
-            <DrawerTitle>
-              {data.user.name}
-            </DrawerTitle>
-            <DrawerDescription>
-              {data.user.email}
-            </DrawerDescription>           
+            <DrawerTitle>{data.user.name}</DrawerTitle>
+            <DrawerDescription>{data.user.email}</DrawerDescription>
           </DrawerHeader>
           <DrawerFooter>
-            <Button variant={'outline'} onClick={() => {}}>
+            <Button
+              variant={'outline'}
+              onClick={() => authClient.customer.portal()}
+            >
               Billing
               <CreditCardIcon className="ml-auto h-4 w-4" />
             </Button>
@@ -116,7 +123,10 @@ const DashboardUserButton = () => {
           </div>
         </DropdownMenuLabel>
         <DropdownMenuSeparator />
-        <DropdownMenuItem className="cursor-pointer flex items-center justify-between">
+        <DropdownMenuItem
+          className="cursor-pointer flex items-center justify-between"
+          onClick={() => authClient.customer.portal()}
+        >
           Billing
           <CreditCardIcon className="ml-auto h-4 w-4" />
         </DropdownMenuItem>

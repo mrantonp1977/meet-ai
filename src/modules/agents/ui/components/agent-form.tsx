@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface AgentFormProps {
   onSuccess?: () => void;
@@ -26,21 +27,25 @@ const AgentForm = ({
 
 }: AgentFormProps) => {
   const trpc = useTRPC();
-  // const router = useRouter();
+  const router = useRouter();
   const queryClient = useQueryClient();
 
   const createAgent = useMutation(
     trpc.agents.create.mutationOptions({
       onSuccess: async () => {
        await queryClient.invalidateQueries(trpc.agents.getMany.queryOptions({}));
+       await queryClient.invalidateQueries(trpc.premium.getFreeUsage.queryOptions());
 
         onSuccess?.();
         toast.success("Agent created successfully!");
-        // router.push("/dashboard/agents");
+        
       },
       onError: (error) => {
-        console.error("Error creating agent:", error);
-        toast.error("Failed to create agent. Please try again.");
+        toast.error("Something went wrong or you have reached your agent limit. Please upgrade your plan to create more agents.");
+
+        if (error.data?.code === 'FORBIDDEN') {
+           router.push("/upgrade");
+        }
       },
     }),
   )
@@ -59,8 +64,7 @@ const AgentForm = ({
         toast.success("Agent updated successfully!");
         // router.push("/dashboard/agents");
       },
-      onError: (error) => {
-        console.error("Error updating agent", error);
+      onError: () => {     
         toast.error("Failed upadate agent. Please try again.");
       },
     }),

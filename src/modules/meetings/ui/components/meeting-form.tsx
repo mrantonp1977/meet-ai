@@ -23,6 +23,7 @@ import { useState } from 'react';
 import CommandSelect from '@/components/command-select';
 import GeneratedAvatar from '@/components/generated-avatar';
 import NewAgentDialog from '@/modules/agents/ui/components/new-agent-dialog';
+import { useRouter } from 'next/navigation';
 
 interface MeetingFormProps {
   onSuccess?: (id?: string) => void;
@@ -38,6 +39,7 @@ const MeetingForm = ({
   const trpc = useTRPC();
   const [openNewAgentDialog, setOpenNewAgentDialog] = useState(false);
   const [agentSearch, setAgentSearch] = useState('');
+  const router = useRouter();
 
   const agents = useQuery(
     trpc.agents.getMany.queryOptions({
@@ -53,14 +55,19 @@ const MeetingForm = ({
         await queryClient.invalidateQueries(
           trpc.meetings.getMany.queryOptions({})
         );
+        await queryClient.invalidateQueries(
+          trpc.premium.getFreeUsage.queryOptions()
+        );
 
         onSuccess?.(data.id);
         toast.success('Meeting created successfully!');
-        // router.push("/dashboard/meetings");
       },
       onError: (error) => {
-        console.error('Error creating meeting:', error);
-        toast.error('Failed to create meeting. Please try again.');
+        toast.error("Something went wrong or you have reached your meeting limit. Please upgrade your plan to create more meetings.");
+        
+        if (error.data?.code === 'FORBIDDEN') {
+          router.push('/upgrade');
+        }
       },
     })
   );
@@ -79,7 +86,6 @@ const MeetingForm = ({
         }
         onSuccess?.();
         toast.success('Meeting updated successfully!');
-        // router.push("/dashboard/meetings");
       },
       onError: (error) => {
         console.error('Error updating meeting', error);
