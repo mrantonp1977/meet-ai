@@ -48,4 +48,4 @@ const Page = async ({ searchParams }: PageProps) => {
   );
 };
 
-export default Page;
+export default Page
